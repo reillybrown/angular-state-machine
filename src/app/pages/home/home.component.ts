@@ -69,4 +69,8 @@ export class HomeComponent implements OnInit {
     selectUser = (id: number) => {
         this.userService.setActive(id);
     }
+
+    logState = () => {
+        this.logger.verbose('State Snapshot: ', this.userQuery.get());
+    }
 }

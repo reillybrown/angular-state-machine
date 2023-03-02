@@ -1,6 +1,7 @@
 <h2>Users Example</h2>
 
 <div class="topSection">
+    <button (click)="logState()">Log State</button>
     <button (click)="listUsers()">List Users</button>
     <br>
     <strong *ngIf="activeUser.id !== 0">Editing User {{ activeUser.id }}</strong>
