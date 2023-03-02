@@ -1,0 +1,12 @@
+<h2>Users Example</h2>
+
+<button (click)="listUsers()">List Users</button>
+<div *ngFor="let user of users">
+    <h4>ID: {{user.id}}</h4>
+    <p>First Name: {{user.firstName}}</p>
+    <p>Last Name: {{user.lastName}}</p>
+    <p>Date of Birth: {{formatDOB(user.dateOfBirth)}}</p>
+</div>
+<div>
+    
+</div>

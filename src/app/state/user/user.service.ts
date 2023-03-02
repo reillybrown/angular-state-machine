@@ -14,11 +14,14 @@ import { setProps } from "@ngneat/elf";
 import { isNil } from 'lodash';
 import { uuid } from '@shared/util/numbers';
 import { LoggerService } from "@shared/services/logger.service";
+import { ApiService } from "@app/shared/services/api.service";
+import { cloneDeep } from "lodash";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(
-        private logger: LoggerService
+        private logger: LoggerService,
+        private api: ApiService
     ) {}
 
     // ******************************************************
@@ -36,7 +39,8 @@ export class UserService {
         let { createdIds } = userStore.getValue();
         const newUsers = users.map(user => {
             if (isNil(user.id)) {
-                user.id = uuid();
+                const id = uuid();
+                user.id = id;
             }
             createdIds.push(user.id);
             return createUser(user);
@@ -149,6 +153,19 @@ export class UserService {
     }
 
     /**
+     * Clears all entities from local store.
+     * 
+     * <Does NOT mark any entities for delete
+     * on the back-end>
+     * 
+     */
+    clearAll = () => {
+        userStore.update(
+            deleteAllEntities()
+        );
+    }
+
+    /**
      * Resets the state of the local store.
      * 
      */
@@ -190,8 +207,11 @@ export class UserService {
      * pre-configured API.
      * 
      */
-    list = () => {
-        // TODO : implement
+    list = async () => {
+        const users = await this.api.listUsers({});
+        this.add(
+            ...cloneDeep(users)
+        );
     }
 
     /**

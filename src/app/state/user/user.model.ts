@@ -1,6 +1,8 @@
 import { v1 } from "@contracts";
 
-export type User = v1.IUser;
+export interface User extends v1.IUser {
+    id: number;
+}
 
 export function createUser(params: Partial<User>) {
     return {

@@ -1,23 +1,23 @@
 interface IUser {
-    id: number;
-    firstName: string;
-    lastName: string;
-    dateOfBirth: number; // in seconds (epoch)
-    homeAddressId: number;
+    id?: number;
+    firstName?: string;
+    lastName?: string;
+    dateOfBirth?: number; // in seconds (epoch)
+    homeAddressId?: number;
 }
 
 interface IAddress {
-    street: string;
-    street2: string;
-    city: string;
-    state: string;
-    zipCode: number;
+    street?: string;
+    street2?: string;
+    city?: string;
+    state?: string;
+    zipCode?: number;
 }
 
 interface IListUsersRequest {
-    firstName: string;
-    lastName: string;
-    dateOfBirth: number;
+    firstName?: string;
+    lastName?: string;
+    dateOfBirth?: number;
 }
 
 export {

@@ -1,12 +1,13 @@
 import { User, IUserMetadata, createUserMetadata } from "./user.model";
 import { createStore, withProps } from "@ngneat/elf";
-import { withActiveIds, withEntities } from "@ngneat/elf-entities";
+import { withActiveId, withActiveIds, withEntities } from "@ngneat/elf-entities";
 
 const userStore = createStore(
     { name: 'user-store' },
     withProps<IUserMetadata>(createUserMetadata({})),
     withEntities<User>({ idKey: 'id', initialValue: [] }),
-    withActiveIds()
+    withActiveId(),
+    withActiveIds() // TODO : should use this and withActiveId together?
 );
 
 export {

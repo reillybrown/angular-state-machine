@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 
-
-export abstract class Logger {
+abstract class Logger {
     verbose: any;
     info: any;
     warn: any;

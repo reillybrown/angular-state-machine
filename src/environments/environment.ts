@@ -1,7 +1,4 @@
-export interface EnvConfig {
-    production: boolean;
-    debug: boolean;
-}
+import { EnvConfig } from "./env-type";
 
 export const environment: EnvConfig = {
     production: false,
