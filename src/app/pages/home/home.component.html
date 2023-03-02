@@ -1,12 +1,22 @@
 <h2>Users Example</h2>
 
-<button (click)="listUsers()">List Users</button>
-<div *ngFor="let user of users">
-    <h4>ID: {{user.id}}</h4>
-    <p>First Name: {{user.firstName}}</p>
-    <p>Last Name: {{user.lastName}}</p>
-    <p>Date of Birth: {{formatDOB(user.dateOfBirth)}}</p>
+<div class="topSection">
+    <button (click)="listUsers()">List Users</button>
+    <br>
+    <strong *ngIf="activeUser.id !== 0">Editing User {{ activeUser.id }}</strong>
+    <br>
+    <form id="editUserForm" [formGroup]="editUserForm">
+        <input formControlName="firstName" />
+        <br>
+        <input formControlName="lastName" />
+    </form>
 </div>
-<div>
-    
+<div *ngFor="let user of users" class="section">
+    <span (click)="selectUser(user.id)"><strong>ID: </strong>{{user.id}}</span>
+    <br>
+    <span class="cell">First Name: {{user.firstName}}</span>
+    <br>
+    <span class="cell">Last Name: {{user.lastName}}</span>
+    <br>
+    <span class="cell">Date of Birth: {{user.dateOfBirth | date: 'MM/dd/yyyy'}}</span>
 </div>

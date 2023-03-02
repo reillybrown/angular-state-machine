@@ -7,7 +7,6 @@ const userStore = createStore(
     withProps<IUserMetadata>(createUserMetadata({})),
     withEntities<User>({ idKey: 'id', initialValue: [] }),
     withActiveId(),
-    withActiveIds() // TODO : should use this and withActiveId together?
 );
 
 export {

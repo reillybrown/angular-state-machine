@@ -18,13 +18,8 @@ export class UserQuery {
         return userStore.query(getAllEntities());
     }
 
-    getActive = (): User | User[] | undefined => {
-        const activeIds = userStore.getValue().activeIds;
-        if (activeIds.length === 1) {
-            return userStore.query(getActiveEntity());
-        } else {
-            return userStore.query(getActiveEntities());
-        }
+    getActive = (): User | undefined => {
+        return userStore.query(getActiveEntity());
     }
 
     select = (): Observable<IUserMetadata> => {
@@ -36,12 +31,7 @@ export class UserQuery {
         return userStore.pipe(selectAllEntities());
     }
 
-    selectActive = (): Observable<User | User[] | undefined> => {
-        const activeIds = userStore.getValue().activeIds;
-        if (activeIds.length === 1) {
-            return userStore.pipe(selectActiveEntity());
-        } else {
-            return userStore.pipe(selectActiveEntities());
-        }
+    selectActive = (): Observable<User | undefined> => {
+        return userStore.pipe(selectActiveEntity());
     }
 }

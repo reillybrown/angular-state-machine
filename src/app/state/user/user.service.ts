@@ -6,7 +6,7 @@ import {
     deleteAllEntities,
     deleteEntities,
     getEntity,
-    setActiveIds,
+    setActiveId,
     updateEntities,
     updateEntitiesIds
 } from "@ngneat/elf-entities";
@@ -53,14 +53,14 @@ export class UserService {
     }
 
     /**
-     * Sets the active entit(y/ies) in the local store.
+     * Sets the active entity in the local store.
      * 
-     * @param ids 
+     * @param id
      */
-    setActive = (...ids: number[]) => {
-        this.logger.verbose('Setting active ids: ', ids);
+    setActive = (id: number) => {
+        this.logger.verbose('Setting active ids: ', id);
         userStore.update(
-            setActiveIds(ids)
+            setActiveId(id)
         );
     }
 
